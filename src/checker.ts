@@ -13,7 +13,8 @@ export async function checkWCAGCompliance(
     let issues: AccessibilityIssue[] = [];
     const page = await browser.newPage();
     await page.goto(url);
-     issues = await checkTextAlternatives(url);
+    
+    issues = await checkTextAlternatives(url);
 
     console.log("Issues : ", issues);
 

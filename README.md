@@ -40,6 +40,31 @@ wcag-compliance-checker <url>
 wcag-compliance-checker https://example.com
 ```
 
+
+# Accessibility Compliance Table (WCAG 2.1 - Success Criterion 1.1.1)
+
+This table outlines accessibility requirements for various HTML elements under **WCAG 2.1 - Success Criterion 1.1.1 (Non-text Content)**.
+
+| **HTML Element**       | **Description**                                        | **Alternative Text Attribute/Method**                                   | **Example**                                                   | **WCAG Criteria**                       |
+|------------------------|--------------------------------------------------------|------------------------------------------------------------------------|--------------------------------------------------------------|-----------------------------------------|
+| `<img>`               | Images must have a text alternative                    | `alt` attribute                                                        | `<img src="logo.png" alt="Company Logo">`                    | 1.1.1 (Controls, Input)                 |
+| `<svg>`               | SVG icons must have descriptive text                   | `aria-label` or `role="img"`                                           | `<svg aria-label="Settings Icon" role="img"></svg>`          | 1.1.1 (Controls, Input)                 |
+| `<input type="image">`| Image buttons must have alternative text               | `alt` attribute                                                        | `<input type="image" src="submit.png" alt="Submit Form">`    | 1.1.1 (Controls, Input)                 |
+| `<area>`              | Image map areas must have descriptive text             | `alt` attribute                                                        | `<area shape="rect" coords="34,44,270,350" alt="Home">`      | 1.1.1 (Controls, Input)                 |
+| `<object>`            | Embedded objects must have descriptive text            | `title` or `aria-label`                                                | `<object data="chart.swf" title="Sales Chart"></object>`     | 1.1.1 (Time-Based Media)                |
+| `<iframe>`            | Iframes must have a descriptive title                   | `title` attribute                                                      | `<iframe src="video.html" title="Video Tutorial"></iframe>`  | 1.1.1 (Time-Based Media)                |
+| `<video>`            | Videos must provide captions                            | `<track kind="captions">`                                              | `<video><track kind="captions" src="subtitles.vtt"></track></video>` | 1.1.1 (Time-Based Media)                |
+| `<audio>`            | Audio elements must provide a transcript                | `<track kind="descriptions">`                                          | `<audio><track kind="descriptions" src="transcript.vtt"></track></audio>` | 1.1.1 (Time-Based Media)                |
+| `<canvas>`           | Canvas elements must have alternative text              | `aria-label` or fallback content                                       | `<canvas aria-label="Graph showing sales trend"></canvas>`   | 1.1.1 (Sensory Content)                 |
+| `<abbr>`             | Abbreviations must have a description                   | `title` attribute                                                      | `<abbr title="World Health Organization">WHO</abbr>`        | 1.1.1 (Text Alternative)                |
+| `<button>`           | Buttons must have text or an accessible name            | Visible text or `aria-label`                                           | `<button aria-label="Close"></button>`                      | 1.1.1 (Controls, Input)                 |
+| `<a>` (links)        | Links with only icons must have an accessible name      | `aria-label`                                                           | `<a href="#" aria-label="Go to Homepage"><svg></svg></a>`   | 1.1.1 (Controls, Input)                 |
+| `<figure>`           | Figures must have captions                              | `<figcaption>`                                                         | `<figure><img src="chart.png"><figcaption>Sales Chart</figcaption></figure>` | 1.1.1 (Text Alternative)                |
+| CAPTCHA elements     | CAPTCHA content must have an alternative method        | Alternative text & multiple forms (e.g., audio CAPTCHA)                | `<img src="captcha.png" alt="Enter the text shown">`        | 1.1.1 (CAPTCHA)                         |
+| Decorative elements  | Purely decorative elements must be hidden from assistive technology | `aria-hidden="true"`, `role="presentation"`, or empty `alt` attribute | `<img src="decorative.png" alt="">`                         | 1.1.1 (Decoration, Formatting, Invisible) |
+
+---
+
 ## License
 
 MIT
