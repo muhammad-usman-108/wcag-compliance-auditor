@@ -65,6 +65,25 @@ This table outlines accessibility requirements for various HTML elements under *
 
 ---
 
+
+# Accessibility Compliance Table (WCAG 2.1 - Success Criterion 1.2)
+
+This table outlines accessibility requirements for various HTML elements under **WCAG 2.1 - Success Criterion 1.2 (Time Based Media)**.
+
+| **HTML Element**   | **Description**                                      | **Alternative Text Attribute/Method**             | **Example**                                                | **WCAG Criteria**                                           |
+|--------------------|------------------------------------------------------|--------------------------------------------------|------------------------------------------------------------|-------------------------------------------------------------|
+| `<audio>` (no controls) | Audio-only content without user controls.          | Provide `<track>` or transcripts.               | ```html <audio src="audio.mp3"></audio> ```                | **1.2.1 Audio-only (Prerecorded)**                          |
+| `<video>` (no controls) | Video-only content without user controls.          | Provide `<track>` or alternative descriptions.  | ```html <video src="video.mp4"></video> ```                | **1.2.1 Video-only (Prerecorded)**                          |
+| `<video>`          | Missing captions for video.                          | `<track kind="captions">`                        | ```html <track kind="captions" src="captions.vtt"> ```      | **1.2.2 Captions (Prerecorded)**, **1.2.4 Captions (Live)** |
+| `<video>`          | Missing audio descriptions for visually impaired users. | `<track kind="descriptions">`                    | ```html <track kind="descriptions" src="descriptions.vtt"> ``` | **1.2.3 Audio Description (Prerecorded)**, **1.2.5 Audio Description (Prerecorded)** |
+| `<video>`          | No sign language interpretation provided.             | `<track kind="sign">`                            | ```html <track kind="sign" src="sign_language.vtt"> ```    | **1.2.6 Sign Language (Prerecorded)**                       |
+| `<video>`          | No extended audio description.                        | `<track kind="descriptions" extended>`          | ```html <track kind="descriptions" src="extended_desc.vtt"> ``` | **1.2.7 Extended Audio Description (Prerecorded)**          |
+| `<video>`          | No media alternative (text-based equivalent).         | `aria-describedby`                               | ```html <video aria-describedby="video-desc"></video> ```  | **1.2.8 Media Alternative (Prerecorded)**                   |
+| `<audio>` (live)   | No real-time captions provided for live audio.        | `<track kind="captions">` or `aria-live="assertive"` | ```html <audio live></audio> ```                           | **1.2.9 Audio-only (Live)**                                 |
+
+---
+
+
 ## License
 
 MIT
