@@ -1,7 +1,9 @@
 import puppeteer from "puppeteer";
 import chalk from "chalk";
 import { checkTextAlternatives } from "./perceivable/text-alternatives";
+import { checkTimeBasedMedia } from "./perceivable/time-based-media"; 
 import { generatePDFReport } from "./pdfReport";
+import { generateJsonFile } from "./saveJson";
 import { AccessibilityIssue } from "./types/accessibilityIssue";
 
 export async function checkWCAGCompliance(
@@ -14,12 +16,15 @@ export async function checkWCAGCompliance(
     const page = await browser.newPage();
     await page.goto(url);
     
-    issues = await checkTextAlternatives(url);
+    issues = [...await checkTextAlternatives(url), ...await checkTimeBasedMedia(url)];
 
     console.log("Issues : ", issues);
 
     // generate PDF report
     generatePDFReport(url, issues);
+
+    // generate JSON file
+    generateJsonFile(url, issues);
 
     if (verbose) {
       issues.forEach((issue) => {
