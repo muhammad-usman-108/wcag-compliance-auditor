@@ -1,28 +1,48 @@
-import puppeteer from "puppeteer";
+import { launchBrowser } from "./utils/browser";
 import chalk from "chalk";
 import { checkTextAlternatives } from "./perceivable/text-alternatives";
-import { checkTimeBasedMedia } from "./perceivable/time-based-media"; 
-import { generatePDFReport } from "./pdfReport";
-import { generateJsonFile } from "./saveJson";
+import { checkTimeBasedMedia } from "./perceivable/time-based-media";
+import { generatePDFReport } from "./reportGeneration/pdfReport";
+import { generateJsonFile } from "./reportGeneration/saveJson";
 import { AccessibilityIssue } from "./types/accessibilityIssue";
+import { checkKeyboardAccessibility } from "./operable/keyboard-accessibility";
+process.env.PUPPETEER_DISABLE_HEADLESS_WARNING = "true";
+
+async function runAccessibilityChecks(
+  url: string
+): Promise<AccessibilityIssue[]> {
+  console.log(chalk.cyan("🔍 Checking for text alternatives..."));
+  const textAlternativeIssues = await checkTextAlternatives(url);
+  console.log(chalk.green("✓ Text alternatives check complete"));
+
+  console.log(chalk.cyan("🔍 Checking time-based media..."));
+  const timeBasedMediaIssues = await checkTimeBasedMedia(url);
+  console.log(chalk.green("✓ Time-based media check complete"));
+
+  console.log(chalk.cyan("🔍 Checking keyboard accessibility..."));
+  const keyboardAccessibilityIssues = await checkKeyboardAccessibility(url);
+  console.log(chalk.green("✓ Keyboard accessibility check complete"));
+
+  return [
+    ...textAlternativeIssues,
+    ...timeBasedMediaIssues,
+    ...keyboardAccessibilityIssues,
+  ];
+}
 
 export async function checkWCAGCompliance(
   url: string,
   verbose: boolean
 ): Promise<void> {
-  const browser = await puppeteer.launch();
+  const browser = await launchBrowser();
   try {
     let issues: AccessibilityIssue[] = [];
     const page = await browser.newPage();
     await page.goto(url);
-    
-    issues = [...await checkTextAlternatives(url), ...await checkTimeBasedMedia(url)];
 
-    console.log("Issues : ", issues);
-
+    issues = await runAccessibilityChecks(url);
     // generate PDF report
     generatePDFReport(url, issues);
-
     // generate JSON file
     generateJsonFile(url, issues);
 
@@ -54,9 +74,11 @@ export async function checkWCAGCompliance(
       return acc;
     }, {} as Record<string, AccessibilityIssue[]>);
 
-    console.log("\nWCAG Compliance Summary:");
-    console.log("=======================");
-    console.log(`Total issues found: ${issues.length}`);
+    console.log(chalk.bold.cyan("\nWCAG Compliance Summary:"));
+    console.log(chalk.bold.cyan("=======================\n"));
+    console.log(
+      chalk.yellow(`Total issues found: ${chalk.red(issues.length)}`)
+    );
 
     Object.entries(groupedIssues).forEach(([criteria, criteriaIssues]) => {
       console.log(
@@ -69,7 +91,7 @@ export async function checkWCAGCompliance(
     const criticalIssues = issues.filter(
       (issue) => issue.impact === "critical"
     ).length;
-    console.log(`\nCritical issues: ${criticalIssues}`);
+    console.log(chalk.red(`\nCritical issues: ${criticalIssues}`));
   } finally {
     await browser.close();
   }
