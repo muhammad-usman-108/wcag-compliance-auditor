@@ -2,6 +2,7 @@ import { launchBrowser } from "./utils/browser";
 import chalk from "chalk";
 import { checkTextAlternatives } from "./perceivable/text-alternatives";
 import { checkTimeBasedMedia } from "./perceivable/time-based-media";
+import { checkAdaptable } from "./perceivable/adaptable";
 import { generatePDFReport } from "./reportGeneration/pdfReport";
 import { generateJsonFile } from "./reportGeneration/saveJson";
 import { AccessibilityIssue } from "./types/accessibilityIssue";
@@ -19,6 +20,10 @@ async function runAccessibilityChecks(
   const timeBasedMediaIssues = await checkTimeBasedMedia(url);
   console.log(chalk.green("✓ Time-based media check complete"));
 
+  console.log(chalk.cyan("🔍 Checking for adaptable..."));
+  const adaptableIssues = await checkAdaptable(url);
+  console.log(chalk.green("✓ Adaptable check complete"));
+
   console.log(chalk.cyan("🔍 Checking keyboard accessibility..."));
   const keyboardAccessibilityIssues = await checkKeyboardAccessibility(url);
   console.log(chalk.green("✓ Keyboard accessibility check complete"));
@@ -26,6 +31,7 @@ async function runAccessibilityChecks(
   return [
     ...textAlternativeIssues,
     ...timeBasedMediaIssues,
+    ...adaptableIssues,
     ...keyboardAccessibilityIssues,
   ];
 }

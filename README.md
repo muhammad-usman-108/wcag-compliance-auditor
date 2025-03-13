@@ -41,7 +41,7 @@ wcag-compliance-checker https://example.com
 ```
 
 
-# Accessibility Compliance Table (WCAG 2.1 - Success Criterion 1.1.1)
+## Accessibility Compliance Table (WCAG 2.1 - Success Criterion 1.1.1)
 
 This table outlines accessibility requirements for various HTML elements under **WCAG 2.1 - Success Criterion 1.1.1 (Non-text Content)**.
 
@@ -66,7 +66,7 @@ This table outlines accessibility requirements for various HTML elements under *
 ---
 
 
-# Accessibility Compliance Table (WCAG 2.1 - Success Criterion 1.2)
+## Accessibility Compliance Table (WCAG 2.1 - Success Criterion 1.2)
 
 This table outlines accessibility requirements for various HTML elements under **WCAG 2.1 - Success Criterion 1.2 (Time Based Media)**.
 
@@ -83,6 +83,27 @@ This table outlines accessibility requirements for various HTML elements under *
 
 ---
 
+## Accessibility Compliance Table (WCAG 2.1 - Success Criterion 1.3)
+
+This table outlines accessibility requirements for various HTML elements under **WCAG 2.1 - Success Criterion 1.3 (Adaptable)**.
+
+| **HTML Element**        | **Description**                                        | **Alternative Text Attribute/Method**                        | **Example**                                                       | **WCAG Criteria**                          |
+|-------------------------|------------------------------------------------------|------------------------------------------------------------|------------------------------------------------------------------|--------------------------------------------|
+| `<b>, <i>, <u>, <font>` | Non-semantic formatting detected                     | Use `<strong>` instead of `<b>`, `<em>` instead of `<i>`, and CSS for styling | `<strong>Important</strong>` instead of `<b>Important</b>`       | **1.3.1 Info and Relationships**           |
+| `[tabindex]`            | Tab order may not reflect meaningful reading sequence | Use `aria-flowto` or `aria-labelledby` for logical navigation | `<div tabindex="0" aria-labelledby="section-title">`            | **1.3.2 Meaningful Sequence**              |
+| Any text content        | Instructions rely on sensory characteristics like color, shape, or position | Provide descriptive text rather than directional cues      | `"Click the submit button"` instead of `"Click the red button"`  | **1.3.3 Sensory Characteristics**          |
+| `<meta name="viewport">` | Viewport scaling is restricted, preventing device rotation | Remove `"user-scalable=no"` to allow device rotation       | `<meta name="viewport" content="width=device-width, initial-scale=1">` | **1.3.4 Orientation**                      |
+| `<input>`              | Missing autocomplete attribute, reducing accessibility for form inputs | Use `autocomplete` attribute for input fields             | `<input type="email" autocomplete="email">`                     | **1.3.5 Identify Input Purpose**           |
+| `[role]`               | UI component role is unclear                          | Use `aria-label` or `aria-describedby` to clarify purpose | `<button aria-label="Submit form">Submit</button>`               | **1.3.6 Identify Purpose**                 |
+
+---
+
+
+## Contributing
+Contributions are welcome! If you have ideas for improvements or have found bugs, please open an issue or submit a pull request on GitHub. Feel free to add your name as well.
+
+- [Muhammad Usman](https://github.com/muhammad-usman-108)
+- [Nabeel Shakeel](https://github.com/nabeel-shakeel)
 
 ## License
 
