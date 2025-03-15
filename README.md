@@ -1,110 +1,139 @@
-# WCAG Compliance Checker
+# wcag-compliance-auditor
 
-A command-line utility to check websites for WCAG (Web Content Accessibility Guidelines) compliance.
+A command-line tool to audit websites for WCAG 2.1 compliance, focusing on accessibility standards and best practices.
+
+[![npm version](https://badge.fury.io/js/wcag-compliance-auditor.svg)](https://www.npmjs.com/package/wcag-compliance-auditor)
+[![npm downloads](https://img.shields.io/npm/dt/wcag-compliance-auditor.svg)](https://www.npmjs.com/package/wcag-compliance-auditor)
+[![Contributors](https://img.shields.io/github/contributors/muhammad-usman-108/wcag-compliance-auditor.svg)](https://github.com/muhammad-usman-108/wcag-compliance-auditor)
+[![Forks](https://img.shields.io/github/forks/nabeel-shakeel/wcag-compliance-auditor.svg)](https://github.com/nabeel-shakeel/wcag-compliance-auditor/network/members)
+[![Stargazers](https://img.shields.io/github/stars/nabeel-shakeel/wcag-compliance-auditor.svg)](https://github.com/nabeel-shakeel/wcag-compliance-auditor/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
 
-Checks for various WCAG compliance issues including:
-
-- Images without alt text (WCAG 1.1.1)
-- Form controls without labels (WCAG 1.3.1)
-- Buttons without accessible names (WCAG 4.1.2)
-- Color contrast issues (WCAG 1.4.3)
-- Heading hierarchy issues (WCAG 1.3.1)
+- 🔍 Automated WCAG 2.1 compliance checking
+- 📝 Comprehensive accessibility reports in PDF and JSON formats
 
 ## Installation
 
 ```bash
-npm install -g wcag-compliance-checker
-```
+# Install globally
+npm install -g wcag-compliance-auditor
 
-Or run directly with npx:
-
-```bash
-npx wcag-compliance-checker <url>
+# Or use with npx
+npx wcag-compliance-auditor <url>
 ```
 
 ## Usage
 
 ```bash
-wcag-compliance-checker <url>
+wcag-compliance-auditor <url> [options]
 ```
 
-## Options
+### Options
 
-- `-v, --verbose`: Show detailed output for each issue.
-- `-h, --help`: Show help for the command.
-- `-V, --version`: Show version number.
+- `-v, --verbose`: Show detailed output for each issue
+- `-h, --help`: Display help information
+- `-V, --version`: Display version information
+
+### Examples
+
+Basic usage:
 
 ```bash
-wcag-compliance-checker https://example.com
+wcag-compliance-auditor https://example.com
 ```
 
+With verbose output:
 
-## Accessibility Compliance Table (WCAG 2.1 - Success Criterion 1.1.1)
+```bash
+wcag-compliance-auditor https://example.com --verbose
+```
 
-This table outlines accessibility requirements for various HTML elements under **WCAG 2.1 - Success Criterion 1.1.1 (Non-text Content)**.
+## WCAG Criteria Checked
 
-| **HTML Element**       | **Description**                                        | **Alternative Text Attribute/Method**                                   | **Example**                                                   | **WCAG Criteria**                       |
-|------------------------|--------------------------------------------------------|------------------------------------------------------------------------|--------------------------------------------------------------|-----------------------------------------|
-| `<img>`               | Images must have a text alternative                    | `alt` attribute                                                        | `<img src="logo.png" alt="Company Logo">`                    | 1.1.1 (Controls, Input)                 |
-| `<svg>`               | SVG icons must have descriptive text                   | `aria-label` or `role="img"`                                           | `<svg aria-label="Settings Icon" role="img"></svg>`          | 1.1.1 (Controls, Input)                 |
-| `<input type="image">`| Image buttons must have alternative text               | `alt` attribute                                                        | `<input type="image" src="submit.png" alt="Submit Form">`    | 1.1.1 (Controls, Input)                 |
-| `<area>`              | Image map areas must have descriptive text             | `alt` attribute                                                        | `<area shape="rect" coords="34,44,270,350" alt="Home">`      | 1.1.1 (Controls, Input)                 |
-| `<object>`            | Embedded objects must have descriptive text            | `title` or `aria-label`                                                | `<object data="chart.swf" title="Sales Chart"></object>`     | 1.1.1 (Time-Based Media)                |
-| `<iframe>`            | Iframes must have a descriptive title                   | `title` attribute                                                      | `<iframe src="video.html" title="Video Tutorial"></iframe>`  | 1.1.1 (Time-Based Media)                |
-| `<video>`            | Videos must provide captions                            | `<track kind="captions">`                                              | `<video><track kind="captions" src="subtitles.vtt"></track></video>` | 1.1.1 (Time-Based Media)                |
-| `<audio>`            | Audio elements must provide a transcript                | `<track kind="descriptions">`                                          | `<audio><track kind="descriptions" src="transcript.vtt"></track></audio>` | 1.1.1 (Time-Based Media)                |
-| `<canvas>`           | Canvas elements must have alternative text              | `aria-label` or fallback content                                       | `<canvas aria-label="Graph showing sales trend"></canvas>`   | 1.1.1 (Sensory Content)                 |
-| `<abbr>`             | Abbreviations must have a description                   | `title` attribute                                                      | `<abbr title="World Health Organization">WHO</abbr>`        | 1.1.1 (Text Alternative)                |
-| `<button>`           | Buttons must have text or an accessible name            | Visible text or `aria-label`                                           | `<button aria-label="Close"></button>`                      | 1.1.1 (Controls, Input)                 |
-| `<a>` (links)        | Links with only icons must have an accessible name      | `aria-label`                                                           | `<a href="#" aria-label="Go to Homepage"><svg></svg></a>`   | 1.1.1 (Controls, Input)                 |
-| `<figure>`           | Figures must have captions                              | `<figcaption>`                                                         | `<figure><img src="chart.png"><figcaption>Sales Chart</figcaption></figure>` | 1.1.1 (Text Alternative)                |
-| CAPTCHA elements     | CAPTCHA content must have an alternative method        | Alternative text & multiple forms (e.g., audio CAPTCHA)                | `<img src="captcha.png" alt="Enter the text shown">`        | 1.1.1 (CAPTCHA)                         |
-| Decorative elements  | Purely decorative elements must be hidden from assistive technology | `aria-hidden="true"`, `role="presentation"`, or empty `alt` attribute | `<img src="decorative.png" alt="">`                         | 1.1.1 (Decoration, Formatting, Invisible) |
+Currently supports checking for:
 
----
+- **Perceivable**
 
+  - Text Alternatives (1.1.1)
+  - Time-based Media (1.2)
 
-## Accessibility Compliance Table (WCAG 2.1 - Success Criterion 1.2)
+- **Operable**
+  - Keyboard Accessible (2.1)
+  - No Keyboard Traps (2.1.2)
 
-This table outlines accessibility requirements for various HTML elements under **WCAG 2.1 - Success Criterion 1.2 (Time Based Media)**.
+## Output
 
-| **HTML Element**   | **Description**                                      | **Alternative Text Attribute/Method**             | **Example**                                                | **WCAG Criteria**                                           |
-|--------------------|------------------------------------------------------|--------------------------------------------------|------------------------------------------------------------|-------------------------------------------------------------|
-| `<audio>` (no controls) | Audio-only content without user controls.          | Provide `<track>` or transcripts.               | ```html <audio src="audio.mp3"></audio> ```                | **1.2.1 Audio-only (Prerecorded)**                          |
-| `<video>` (no controls) | Video-only content without user controls.          | Provide `<track>` or alternative descriptions.  | ```html <video src="video.mp4"></video> ```                | **1.2.1 Video-only (Prerecorded)**                          |
-| `<video>`          | Missing captions for video.                          | `<track kind="captions">`                        | ```html <track kind="captions" src="captions.vtt"> ```      | **1.2.2 Captions (Prerecorded)**, **1.2.4 Captions (Live)** |
-| `<video>`          | Missing audio descriptions for visually impaired users. | `<track kind="descriptions">`                    | ```html <track kind="descriptions" src="descriptions.vtt"> ``` | **1.2.3 Audio Description (Prerecorded)**, **1.2.5 Audio Description (Prerecorded)** |
-| `<video>`          | No sign language interpretation provided.             | `<track kind="sign">`                            | ```html <track kind="sign" src="sign_language.vtt"> ```    | **1.2.6 Sign Language (Prerecorded)**                       |
-| `<video>`          | No extended audio description.                        | `<track kind="descriptions" extended>`          | ```html <track kind="descriptions" src="extended_desc.vtt"> ``` | **1.2.7 Extended Audio Description (Prerecorded)**          |
-| `<video>`          | No media alternative (text-based equivalent).         | `aria-describedby`                               | ```html <video aria-describedby="video-desc"></video> ```  | **1.2.8 Media Alternative (Prerecorded)**                   |
-| `<audio>` (live)   | No real-time captions provided for live audio.        | `<track kind="captions">` or `aria-live="assertive"` | ```html <audio live></audio> ```                           | **1.2.9 Audio-only (Live)**                                 |
+The tool generates:
 
----
+- Console output with summary of findings
+- Detailed PDF report
+- JSON file with structured data
+- Color-coded severity levels for issues
 
-## Accessibility Compliance Table (WCAG 2.1 - Success Criterion 1.3)
+## Reports
 
-This table outlines accessibility requirements for various HTML elements under **WCAG 2.1 - Success Criterion 1.3 (Adaptable)**.
+Reports include:
 
-| **HTML Element**        | **Description**                                        | **Alternative Text Attribute/Method**                        | **Example**                                                       | **WCAG Criteria**                          |
-|-------------------------|------------------------------------------------------|------------------------------------------------------------|------------------------------------------------------------------|--------------------------------------------|
-| `<b>, <i>, <u>, <font>` | Non-semantic formatting detected                     | Use `<strong>` instead of `<b>`, `<em>` instead of `<i>`, and CSS for styling | `<strong>Important</strong>` instead of `<b>Important</b>`       | **1.3.1 Info and Relationships**           |
-| `[tabindex]`            | Tab order may not reflect meaningful reading sequence | Use `aria-flowto` or `aria-labelledby` for logical navigation | `<div tabindex="0" aria-labelledby="section-title">`            | **1.3.2 Meaningful Sequence**              |
-| Any text content        | Instructions rely on sensory characteristics like color, shape, or position | Provide descriptive text rather than directional cues      | `"Click the submit button"` instead of `"Click the red button"`  | **1.3.3 Sensory Characteristics**          |
-| `<meta name="viewport">` | Viewport scaling is restricted, preventing device rotation | Remove `"user-scalable=no"` to allow device rotation       | `<meta name="viewport" content="width=device-width, initial-scale=1">` | **1.3.4 Orientation**                      |
-| `<input>`              | Missing autocomplete attribute, reducing accessibility for form inputs | Use `autocomplete` attribute for input fields             | `<input type="email" autocomplete="email">`                     | **1.3.5 Identify Input Purpose**           |
-| `[role]`               | UI component role is unclear                          | Use `aria-label` or `aria-describedby` to clarify purpose | `<button aria-label="Submit form">Submit</button>`               | **1.3.6 Identify Purpose**                 |
+- Issue type and description
+- WCAG criteria reference
+- Element location (DOM path)
+- Impact level
+- Suggested fixes
 
----
+## Requirements
 
+- Node.js 14.x or higher
+- Chromium (automatically installed with Puppeteer)
 
 ## Contributing
-Contributions are welcome! If you have ideas for improvements or have found bugs, please open an issue or submit a pull request on GitHub. Feel free to add your name as well.
 
-- [Muhammad Usman](https://github.com/muhammad-usman-108)
-- [Nabeel Shakeel](https://github.com/nabeel-shakeel)
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute to this project.
+
+## Development
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/wcag-compliance-auditor.git
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+```
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Built with [Puppeteer](https://pptr.dev/)
+- WCAG 2.1 Guidelines
+- The web accessibility community
+
+## Support
+
+For support, please:
+
+1. Check the [issues](https://github.com/yourusername/wcag-compliance-auditor/issues) page
+2. Open a new issue if needed
+
+## Roadmap
+
+- [ ] Add more WCAG criteria checks
+- [ ] Implement batch URL processing
+- [ ] Add CI/CD pipeline integration
+
+## Authors
+
+| Name           | Role             | GitHub                                                       |
+| -------------- | ---------------- | ------------------------------------------------------------ |
+| Muhammad Usman | Core Contributor | [@muhammad-usman-108](https://github.com/muhammad-usman-108) |
+| Nabeel Shakeel | Core Contributor | [@nabeel-shakeel](https://github.com/nabeel-shakeel)         |
+
+## Accessibility Compliance Table
+
+Please see [COMPLIANCE_TABLE.md](COMPLIANCE_TABLE.md) for details of success criteria
