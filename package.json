@@ -19,7 +19,8 @@
     "wcag",
     "a11y",
     "audit",
-    "testing"
+    "testing",
+    "compliance"
   ],
   "author": {
     "name": "Muhammad Usman",
