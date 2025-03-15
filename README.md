@@ -58,6 +58,7 @@ Currently supports checking for:
 
   - Text Alternatives (1.1.1)
   - Time-based Media (1.2)
+  - Adaptable (1.3)
 
 - **Operable**
   - Keyboard Accessible (2.1)
