@@ -1,10 +1,10 @@
 {
-  "name": "wcag-compliance-checker",
-  "version": "1.0.0",
+  "name": "wcag-compliance-auditor",
+  "version": "1.0.1",
   "description": "CLI utility to check websites for WCAG compliance",
   "main": "dist/index.js",
   "bin": {
-    "aria-label-checker": "./dist/index.js"
+    "aria-label-auditor": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -22,16 +22,7 @@
     "testing",
     "compliance"
   ],
-  "author": {
-    "name": "Muhammad Usman",
-    "url": "https://github.com/muhammad-usman-108"
-  },
-  "contributors": [
-    {
-      "name": "Nabeel Shakeel",
-      "url": "https://github.com/nabeel-shakeel"
-    }
-  ],
+  "author": "Muhammad Usman Nabeel Shakeel",
   "repository": {
     "type": "git",
     "url": "https://github.com/muhammad-usman-108/wcag-compliance-auditor.git"
