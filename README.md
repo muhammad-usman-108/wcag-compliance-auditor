@@ -1,13 +1,13 @@
 # wcag-compliance-auditor
 
-A command-line tool to audit websites for WCAG 2.1 compliance, focusing on accessibility standards and best practices.
-
-[![npm version](https://badge.fury.io/js/wcag-compliance-auditor.svg)](https://www.npmjs.com/package/wcag-compliance-auditor)
+[![npm version](https://img.shields.io/npm/v/wcag-compliance-auditor)](https://www.npmjs.com/package/wcag-compliance-auditor)
 [![npm downloads](https://img.shields.io/npm/dt/wcag-compliance-auditor.svg)](https://www.npmjs.com/package/wcag-compliance-auditor)
 [![Contributors](https://img.shields.io/github/contributors/muhammad-usman-108/wcag-compliance-auditor.svg)](https://github.com/muhammad-usman-108/wcag-compliance-auditor)
-[![Forks](https://img.shields.io/github/forks/nabeel-shakeel/wcag-compliance-auditor.svg)](https://github.com/nabeel-shakeel/wcag-compliance-auditor/network/members)
-[![Stargazers](https://img.shields.io/github/stars/nabeel-shakeel/wcag-compliance-auditor.svg)](https://github.com/nabeel-shakeel/wcag-compliance-auditor/stargazers)
+[![Forks](https://img.shields.io/github/forks/muhammad-usman-108/wcag-compliance-auditor.svg)](https://github.com/muhammad-usman-108/wcag-compliance-auditor/network/members)
+[![Stargazers](https://img.shields.io/github/stars/muhammad-usman-108/wcag-compliance-auditor.svg)](https://github.com/muhammad-usman-108/wcag-compliance-auditor/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A command-line tool to audit websites for WCAG 2.1 compliance, focusing on accessibility standards and best practices.
 
 ## Features
 
