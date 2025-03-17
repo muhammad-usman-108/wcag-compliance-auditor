@@ -22,7 +22,11 @@
     "testing",
     "compliance"
   ],
-  "author": "Muhammad Usman Nabeel Shakeel",
+  "author": "Muhammad Usman",
+  "contributors": [
+    "Muhammad Usman",
+    "Nabeel Shakeel"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/muhammad-usman-108/wcag-compliance-auditor.git"
