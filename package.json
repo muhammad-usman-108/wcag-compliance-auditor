@@ -1,6 +1,6 @@
 {
   "name": "wcag-compliance-auditor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CLI utility to check websites for WCAG compliance",
   "main": "dist/index.js",
   "bin": {
